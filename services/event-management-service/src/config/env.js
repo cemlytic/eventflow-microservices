@@ -1,0 +1,14 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+export const env = {
+  PORT: process.env.PORT || 4001,
+  MONGODB_URI: process.env.MONGODB_URI,
+  JWT_SECRET: process.env.JWT_SECRET,
+  JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN,
+  REDIS_URL: process.env.REDIS_URL
+};
+
+for (const [key, value] of Object.entries(env)) {
+  if (!value) console.warn(`[env] ${key} is not set`);
+}

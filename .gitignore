@@ -1,0 +1,91 @@
+# -----------------------------
+# Node & Package Managers
+# -----------------------------
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+
+# -----------------------------
+# Build Artifacts
+# -----------------------------
+dist/
+build/
+**/dist/
+**/build/
+lib/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# -----------------------------
+# Runtime & Logs
+# -----------------------------
+logs/
+**/*.log
+*.log
+pids/
+*.pid
+*.pid.lock
+.cache/
+.tmp/
+tmp/
+temp/
+
+# -----------------------------
+# Env & Secrets
+# -----------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+.envrc
+*.local
+*.local.*
+.env.local
+.env.development.local
+.env.test.local
+
+# -----------------------------
+# Docker / Compose (local dev)
+# -----------------------------
+docker-compose.override.yml
+# Eğer repo içinde yerel volume klasörleri tutarsan:
+infra/volumes/**
+infra/data/**
+services/**/data/**
+services/**/storage/**
+services/**/uploads/**
+# Redis/Mongo/MySQL dump/snapshot dosyaları:
+dump.rdb
+appendonly.aof
+*.sqlite
+*.sqlite-journal
+
+# -----------------------------
+# Tooling Caches
+# -----------------------------
+.eslintcache
+.turbo/
+.nx/
+
+# -----------------------------
+# IDE / Editors
+# -----------------------------
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.iml
+
+# -----------------------------
+# OS Junk
+# -----------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+$RECYCLE.BIN/

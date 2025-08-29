@@ -1,0 +1,52 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  event-management-service:
+    build:
+      context: .
+      dockerfile: services/event-management-service/Dockerfile
+    working_dir: /app/services/event-management-service
+    env_file:
+      - ./services/event-management-service/.env
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./:/app
+      - ems_node_modules:/app/services/event-management-service/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports: ["4001:4001"]
+    command: npm run dev
+
+  notification-service:
+    build:
+      context: .
+      dockerfile: services/notification-service/Dockerfile
+    working_dir: /app/services/notification-service
+    env_file:
+      - ./services/notification-service/.env
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./:/app
+      - notif_node_modules:/app/services/notification-service/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports: ["4002:4002"]
+    command: npm run dev
+
+volumes:
+  redis_data:
+  ems_node_modules:
+  notif_node_modules:
