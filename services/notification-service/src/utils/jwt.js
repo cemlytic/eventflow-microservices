@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
+import { createVerifyToken } from '@eventflow/shared/jwt';
 import { env } from '../config/env.js';
 
 
-export const verifyToken = async (token) => jwt.verify(token, env.JWT_SECRET);
+export const verifyToken = createVerifyToken(env.JWT_SECRET);

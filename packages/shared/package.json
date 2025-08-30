@@ -6,9 +6,12 @@
   "main": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./rate-limit": "./src/rate-limit.js"
+    "./rate-limit": "./src/rate-limit.js",
+    "./jwt": "./src/jwt.js",
+    "./auth": "./src/auth.js"
   },
   "dependencies": {
-    "express-rate-limit": "^8.0.1"
+    "express-rate-limit": "^8.0.1",
+    "jsonwebtoken": "^9.0.2"
   }
 }
