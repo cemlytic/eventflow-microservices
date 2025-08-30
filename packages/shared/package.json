@@ -5,6 +5,10 @@
   "private": true,
   "main": "src/index.js",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./src/index.js",
+    "./rate-limit": "./src/rate-limit.js"
+  },
+  "dependencies": {
+    "express-rate-limit": "^8.0.1"
   }
 }

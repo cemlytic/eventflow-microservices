@@ -19,5 +19,14 @@ export const env = {
     .map((s) => s.trim())
     .filter(Boolean),
 
+  EMAIL_ENABLED:
+    String(process.env.EMAIL_ENABLED || 'false').toLowerCase() === 'true',
+  EMAIL_USER: process.env.EMAIL_USER,
+  EMAIL_PASS: process.env.EMAIL_PASS,
+  EMAIL_FROM: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+
+  RATE_LIMIT_WINDOW_MS: Number(process.env.RATE_LIMIT_WINDOW_MS || 60_000),
+  RATE_LIMIT_MAX: Number(process.env.RATE_LIMIT_MAX || 30),
+
   NODE_ENV: process.env.NODE_ENV || 'development',
 };
